@@ -1,6 +1,6 @@
 # Enterprise RAG Knowledge Assistant & Evaluation Dashboard
 
-This is a professional-grade Retrieval-Augmented Generation (RAG) system designed to act as an expert knowledge worker for corporate insurance data. This project implements a complete LLM-Ops pipeline: from automated document ingestion and vectorization to a sophisticated evaluation dashboard that measures retrieval precision and answer quality using LLM-as-a-judge.
+This is a robust Retrieval-Augmented Generation (RAG) system designed to act as an expert knowledge worker for corporate insurance data. This project implements an LLM-Ops pipeline, from automated document ingestion and vectorization to a sophisticated evaluation dashboard that measures retrieval precision and answer quality using LLM-as-a-judge.
 
 # Key Features
 
@@ -92,7 +92,7 @@ A RAG system is only as good as its retrieval. This project measures success usi
 
 **nDCG (Normalized Discounted Cumulative Gain)**: Measures the effectiveness of the ranking based on the position of relevant keywords.
 
-**Multi-Dimensional Scoring**: Every answer is compared against a "Golden Reference" answer and scored on Accuracy, Completeness, and Relevance using a judge LLM to ensure zero hallucinations.
+**Multi-Dimensional Scoring**: Every answer is compared against a "Golden Reference" answer and scored on Accuracy, Completeness, and Relevance using a judge LLM which reduces hallucinations significantly.
 
 # Project Structure
 
