@@ -24,13 +24,13 @@ This is a professional-grade Retrieval-Augmented Generation (RAG) system designe
 
 1. **Expert Knowledge Assistant**
 
-[INSERT YOUR CHATBOT SCREENSHOT HERE] 
+![Chat UI](assets/chat-ui.png)
 
-The Chatbot interface features a dual-pane view: the conversational UI on the left and the raw retrieved context on the right for full transparency.
+The Chatbot interface features a dual-pane view, the conversational UI on the left and the raw retrieved context on the right for full transparency.
 
 2. **RAG Evaluation Dashboard**
 
-[INSERT YOUR EVALUATOR SCREENSHOT HERE] 
+![Evaluation Dashboard](assets/eval-dashboard.png) 
 
 The Dashboard visualizes retrieval performance across categories (direct fact, spanning, temporal) and provides color-coded health metrics for system accuracy.
 
@@ -47,3 +47,61 @@ The Dashboard visualizes retrieval performance across categories (direct fact, s
 **UI Framework**: Gradio.
 
 **Package Management**: uv.
+
+# Installation and Setup
+
+This project uses uv for lightning-fast, reproducible dependency management.
+
+1. **Clone the Repository**
+
+```git clone https://github.com/yourusername/rag-knowledge-worker-evals.gitcd rag-knowledge-worker-evals```
+
+2. **Environment Setup: Create a .env file in the root directory and add your OpenAI API key**
+
+```OPENAI_API_KEY=your_sk_key_here```
+
+3. **Install Dependencies**
+
+```uv sync```
+
+# Usage Guide
+
+**Step 1: Ingest Knowledge**
+
+Process the files in the /knowledge-base directory and populate the vector database.
+
+```uv run ingest.py```
+
+**Step 2: Launch the Assistant**
+
+Run the user-facing chatbot to interact with the insurance knowledge base.
+
+```uv run app.py```
+
+**Step 3: Run Evaluations**
+
+Execute the evaluation suite to benchmark retrieval and generation quality.
+
+```uv run evaluator.py```
+
+# Evaluation Methodology
+
+A RAG system is only as good as its retrieval. This project measures success using:
+
+**MRR (Mean Reciprocal Rank)**: Evaluates how high the correct information appears in the search results.
+
+**nDCG (Normalized Discounted Cumulative Gain)**: Measures the effectiveness of the ranking based on the position of relevant keywords.
+
+**Multi-Dimensional Scoring**: Every answer is compared against a "Golden Reference" answer and scored on Accuracy, Completeness, and Relevance using a judge LLM to ensure zero hallucinations.
+
+# Project Structure
+
+```ingest.py```: Data processing, splitting, and vectorization logic.
+
+```answer.py```: Core RAG logic, context fetching, and LLM chain.
+
+```eval.py```: Implementation of retrieval and answer metrics (LLM-as-a-judge).
+
+```evaluator.py```: Gradio-based dashboard for visualizing system health.
+
+```app.py```: Production-ready chat interface for end-users.
